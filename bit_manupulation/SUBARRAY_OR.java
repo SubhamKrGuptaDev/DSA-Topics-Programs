@@ -91,11 +91,11 @@
  *             for (int j = 0; j <= 31; ++j) {
  *                 long pw = 1 << j;
  *                 if ((tmp & pw) != 0) { //if jth bit is set
- *                     ans += pw * i; // add its contribution in ans for all subarrays ending at index i
+ *                     ans += pw * i; // add its contribution in and for all subarrays ending at index i
  *                     idx[j] = i; // store the index for next elements
  *                 } else if (idx[j] != 0) // if jth bit is not set
  *                 {
- *                     ans += pw * idx[j]; // add its contribution in ans for all subarrays ending at index i using
+ *                     ans += pw * idx[j]; // add its contribution in answer for all subarrays ending at index i using
  *                 } // the information of last element having jth bit set
  *             }
  *         }
@@ -116,26 +116,33 @@ public class SUBARRAY_OR {
     public int solve(ArrayList<Integer> A) {
         long result = 0;
         int n = A.size();
-        long mod = 1000 * 1000 * 1000 + 7;
-        long totalSubArray = (1L * n * (n+1)) / 2;
+        long mod = 1000 * 1000 * 1000 + 7;                      // Mod
+        long totalSubArray = (1L * n * (n+1)) / 2;              // All SubArray value
 
-        for(int i=0; i < 32; i++) {
+        for(int i=0; i < 32; i++) {                             // All Bit Loop
             long countZero = 0;
             long temp = 0;
-            for(int j = 0; j<n; j++) {
-                if((A.get(j) & (1L << i)) == 0) {
+            for(int j = 0; j<n; j++) {                          // Array Loop
+                if((A.get(j) & (1L << i)) == 0) {               // particular bit check if 0 then count++
                     countZero++;
                 }
-                else {
+                else {                                          // if bit 1 then formula(N * (N + 1))/2 and add the value in temp
                     temp += (countZero * (countZero + 1)) / 2;
-                    countZero = 0;
+                    countZero = 0;                              // countZero equal to 0 BCZ continue 0 not present
                 }
 
             }
-            temp += (countZero * (countZero + 1)) / 2;
+            temp += (countZero * (countZero + 1)) / 2;          // this calculation for last zeros which once are missed in upper condition
+            /**
+             *
+             * formular (totalSubArray - temp) * 1 << i
+             * then we get the that particular position all 1's bit for all values which one present in array,
+             * then (result + that formula value) then we get all subarray with OR values;
+             *
+             */
             result = (result + ((totalSubArray - temp) * (1L << i)) % mod) % mod;
         }
-        return (int)(result % mod);
+        return (int)(result % mod);     // Output can be very large that's mod is needed
     }
 
     public static void main(String[] args) {
