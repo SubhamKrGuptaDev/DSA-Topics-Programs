@@ -102,7 +102,10 @@
  *         return (int)(ans % 1000000007);
  *     }
  *
- *
+ *  * Formula *
+ *  All subarray (N * (N + 1)) / 2
+ *  Count Particular Position 1 bits
+ *  All_SubArray - (((continue_zero * (continue_zero + 1)) / 2) + ((single_zero * (single_zero + 1)) / 2))
  *
  */
 
