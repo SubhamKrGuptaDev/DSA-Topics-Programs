@@ -86,7 +86,7 @@ public class Wave_Array {
         return A;
     }
 
-    // Count Sort Solution
+    // Count Sort Solution [Count Sort is possible because max array size = max contains value]
     private ArrayList<Integer> countSortAlgo(ArrayList<Integer> A) {
         if(A.size() == 1) {
             return A;
