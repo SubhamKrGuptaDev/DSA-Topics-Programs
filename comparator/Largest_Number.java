@@ -57,6 +57,19 @@ public class Largest_Number {
             String v2 = String.valueOf(n2);
             return (v2+v1).compareTo(v1+v2);
         });
+        /**
+         * Why I used StringBuilder ?
+         * Because: <>
+         *     StringBuilder is Mutable, and it can add values in same object
+         *     but if I use String then it's increase the space complexity why ?
+         *     Operation -> str += arr[i]
+         * </>
+         * Because: <>
+         *     String is Immutable it's always create new object and store the all values
+         *     so add characters using string is not a good practice.
+         * </>
+         *
+         */
         StringBuilder result = new StringBuilder();
         for(int i=0; i<A.size(); i++) {
             if(A.get(i).equals(0)) {
