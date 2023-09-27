@@ -103,12 +103,12 @@ public class Wave_Array {
         int n = A.size();
         int[] count = new int[size];
         for(int i=0; i<n; i++) {
-            count[A.get(i) - 1]++;
+            count[A.get(i)]++;
         }
         ArrayList<Integer> result = new ArrayList<>();
         for(int i=0; i<size; i++) {
             while(count[i] > 0) {
-                result.add(i+1);
+                result.add(i);
                 count[i]--;
             }
         }
