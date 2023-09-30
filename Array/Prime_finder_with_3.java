@@ -25,6 +25,50 @@ package Array;
 
 public class Prime_finder_with_3 {
 
+    // linear Approach
+    private boolean linearPrimeNumber(int n) {
+        if(n <= 1) return false;
+        int i;
+        for(i=2; i<=n; i++) {
+            if(n % i == 0) break;
+        }
+        return i == n;
+    }
+
+    // N/2 Approach
+    private boolean halfPrimeChecker(int n) {
+        for(int i=2; i<=n/2; i++) {
+            if(n % i == 0) return false;
+        }
+        return true;
+    }
+
+    // sqrt approach
+    private boolean sqrtPrimeChecker(int n) {
+        if(n <= 1) return false;
+        for(int i=2; i*i<=n; i++) {
+            if(n % i == 0) return false;
+        }
+        return true;
+    }
+
+    // factor checking approach
+    private boolean factorCheckingPrime(int n) {
+        int factor = 0;
+        int i;
+        for(i=1; i*i<=n; i++) {
+
+            if(n % i == 0) {
+                factor += 2;
+            }
+        }
+        if((i-1) * (i-1) == n) factor--;
+        return factor == 2;
+    }
+
+
+
+
     public static void main(String[] args) {
 
     }
