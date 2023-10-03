@@ -68,16 +68,28 @@ import java.util.ArrayList;
 
 public class Max_Chunks_To_Make_Sorted {
 
+    /**
+     *
+     * If the array
+     * arr = [ 1, 2, 3, 4, 5, 0 ]
+     * we have to check max value and when max value and i both are same
+     * then we increase the chunk value.
+     *
+     * upper example chunk are 1 only
+     *
+     * @param A
+     * @return
+     */
     public int solve(ArrayList<Integer> A) {
-        int count = 0;
+        int chunkCount = 0;
         int max = Integer.MIN_VALUE;
         int n = A.size();
         for(int i=0; i<n; i++) {
-            max = Math.max(max, A.get(i));
-            if(max == i) count++;
-        }
+            max = Math.max(max, A.get(i));      // storing max value
+            if(max == i) chunkCount++;          // max == i -> value and index are same
+        }                                       // increase chunk value.
 
-        return count;
+        return chunkCount;
     }
 
     public static void main(String[] args) {
