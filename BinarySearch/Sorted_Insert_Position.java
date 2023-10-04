@@ -49,6 +49,24 @@
  *
  * The target value should be inserted at index 1.
  *
+ * <>
+ *     public int searchInsert(int[] A, int B) {
+ *         int l = 0, h = A.length - 1;
+ *         int ans = A.length;
+ *         while (l <= h) {
+ *             int mid = l + (h - l) / 2;
+ *             if (A[mid] > B) {
+ *                 ans = Math.min(ans, mid);
+ *                 h = mid - 1;
+ *             } else if (A[mid] < B) {
+ *                 l = mid + 1;
+ *             } else
+ *                 return mid;
+ *         }
+ *         return ans;
+ *     }
+ * </>
+ *
  *
  *
  *
