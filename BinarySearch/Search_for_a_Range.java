@@ -1,7 +1,111 @@
 /**
  *
+ * Problem Description
+ * Given a sorted array of integers A (0-indexed) of size N,
+ * find the left most and the right most index of a given integer B in the array A.
+ *
+ * Return an array of size 2, such that
+ *           First element = Left most index of B in A
+ *           Second element = Right most index of B in A.
+ * If B is not found in A, return [-1, -1].
+ *
+ * Note : Your algorithm's runtime complexity must be in the order of O(log n).
  *
  *
+ *
+ * Problem Constraints
+ * 1 <= N <= 10^6
+ * 1 <= A[i], B <= 10^9
+ *
+ *
+ *
+ * * Example Input *
+ * Input 1:
+ *
+ *  A = [5, 7, 7, 8, 8, 10]
+ *  B = 8
+ * Input 2:
+ *
+ *  A = [5, 17, 100, 111]
+ *  B = 3
+ *
+ *
+ * * Example Output *
+ * Output 1:
+ *
+ *  [3, 4]
+ * Output 2:
+ *
+ *  [-1, -1]
+ *
+ *
+ * * Example Explanation *
+ * Explanation 1:
+ *
+ *  The first occurrence of 8 in A is at index 3.
+ *  The last occurrence of 8 in A is at index 4.
+ *  ans = [3, 4]
+ * Explanation 2:
+ *
+ *  There is no occurrence of 3 in the array.
+ *
+ *  <>
+ *  public ArrayList<Integer> searchRange(final List<Integer> A, int B) {
+ * 	    int low, up;
+ * 	    ArrayList<Integer> res = new ArrayList<>();
+ * 	    low = lowerBound(A, 0, A.size() - 1, B);
+ * 	    if (low == -1) {
+ * 	        res.add(-1);
+ * 	        res.add(-1);
+ * 	        return res;
+ *                }
+ * 	   up = upperBound(A, 0, A.size() - 1, B);
+ * 	   res.add(low);
+ * 	   res.add(up);
+ * 	   return r    ;
+ * 	}
+ *
+ * 	public int lowerBound(final List<Integer> A, int start, int end, int num) {
+ * 	    int steps = end - start + 1;
+ * 	    int mid;
+ * 	    int low = -1;
+ * 	    int val;
+ * 	    while (steps > 0) {
+ * 	        mid = (start + end) / 2;
+ * 	        val = A.get(mid);
+ * 	        if (num < val)
+ * 	            end = mid - 1;
+ * 	        else if (num > val)
+ * 	            start = mid + 1;
+ * 	        else{
+ * 	            low = mid;
+ * 	            end = mid - 1;
+ *            }
+ * 	        steps /= 2;
+ *        }
+ * 	    return l    ;
+ * 	}
+ * 	public int upperBound(final List<Integer> A, int start, int end, int num) {
+ * 	    int steps = end - start + 1;
+ * 	    int mid;
+ * 	    int up = end + 1;
+ * 	    int val;
+ * 	    while (steps > 0) {
+ * 	        mid = (start + end) / 2;
+ * 	        val = A.get(mid);
+ * 	        if (num < val)
+ * 	            end = mid - 1;
+ * 	        else if (num > val)
+ * 	            start = mid + 1;
+ * 	        else{
+ * 	            up = mid;
+ * 	            start = mid + 1;
+ *            }
+ * 	        steps /= 2;
+ *        }
+ * 	    return     ;
+ * 	}
+ *  </>
  *
  *
  */
