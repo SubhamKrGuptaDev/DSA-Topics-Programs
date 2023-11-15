@@ -26,7 +26,7 @@
  *
  *
  * Output Format
- * Return the number of unordered triplets that form a right angled triangle modulo (109 + 7).
+ * Return the number of unordered triplets that form a right-angled triangle modulo (109 + 7).
  *
  *
  *
@@ -53,10 +53,10 @@
  * * Example Explanation *
  * Explanation 1:
  *
- *  All three points make a right angled triangle. So return 1.
+ *  All three points make a right-angled triangle. So return 1.
  * Explanation 2:
  *
- *  6 triplets which make a right angled triangle are:    (1, 1), (1, 2), (2, 1)
+ *  6 triplets which make a right-angled triangle are:    (1, 1), (1, 2), (2, 1)
  *                                                        (1, 1), (3, 1), (1, 2)
  *                                                        (1, 1), (3, 1), (3, 2)
  *                                                        (2, 1), (3, 1), (3, 2)
