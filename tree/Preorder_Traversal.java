@@ -5,7 +5,7 @@
  * <p>
  * <p>
  * Problem Constraints
- * 1 <= number of nodes <= 105
+ * 1 <= number of nodes <= 10^5
  * <p>
  * <p>
  * <p>
