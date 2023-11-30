@@ -66,13 +66,11 @@
 
 package tree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class LevelOrder {
 
-    private ArrayList<ArrayList<Integer>> levelOrder(TreeNode A) {
+    private ArrayList<ArrayList<Integer>> levelOrderQueue(TreeNode A) {
         Queue<TreeNode> queue = new LinkedList<>();
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         if(A == null) return result;
@@ -107,7 +105,39 @@ public class LevelOrder {
         return result;
     }
 
+    private ArrayList<ArrayList<Integer>> levelOrderDeque(TreeNode A) {
+        Deque<TreeNode> queue = new ArrayDeque<>();
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        if (A == null) return result;
 
+        result.add(new ArrayList<>());
+        queue.add(A);
+
+        TreeNode last = A;
+        // TreeNode temp1 = null;
+        while (!queue.isEmpty()) {
+
+            TreeNode q = queue.poll();
+            ArrayList<Integer> temp = result.get(result.size() - 1);
+            temp.add(q.val);
+
+            if (q.left != null) {
+                queue.add(q.left);
+                // temp1 = q.left;
+            }
+            if (q.right != null) {
+                queue.add(q.right);
+                // temp1 = q.right;
+            }
+
+            if (last == q && !queue.isEmpty()) {
+                result.add(new ArrayList<>());
+                last = queue.getLast();
+            }
+
+        }
+        return result;
+    }
 
     public static void main(String[] args) {
 
