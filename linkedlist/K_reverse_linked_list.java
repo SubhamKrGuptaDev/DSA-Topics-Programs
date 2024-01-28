@@ -90,4 +90,44 @@ public class K_reverse_linked_list {
         return prev;
     }
 
+
+    // Leetcode link - https://leetcode.com/problems/reverse-nodes-in-k-group/
+
+    public ListNode reverseKGroup(ListNode head, int k) {
+        ListNode cur = head;
+        ListNode prev = null;
+        ListNode next = null;
+        int index = 0;
+
+        int size = size(head);
+        if(size >= k) {
+            while(cur != null && index < k) {
+                next = cur.next;
+                cur.next = prev;
+                prev = cur;
+                cur = next;
+                index++;
+            }
+        }
+        else {
+            return head;
+        }
+
+        if(next != null ) {
+            head.next = reverseKGroup(next, k);
+        }
+
+        return prev;
+    }
+
+    int size(ListNode head) {
+        ListNode cur = head;
+        int size = 0;
+        while(cur != null) {
+            size++;
+            cur = cur.next;
+        }
+        return size;
+    }
+
 }
