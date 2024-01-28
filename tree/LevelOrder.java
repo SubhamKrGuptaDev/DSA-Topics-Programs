@@ -70,6 +70,22 @@ import java.util.*;
 
 public class LevelOrder {
 
+    // optimized
+    private ArrayList<ArrayList<Integer>> levelOrderOptimized(TreeNode root) {
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        if(root == null) return result;
+        levelOrderTraversal(0, result, root);
+        return result;
+    }
+
+    private void levelOrderTraversal(int level, ArrayList<ArrayList<Integer>> list, TreeNode root) {
+        if(root == null) return;
+        if(list.size() <= level) list.add(new ArrayList<>());
+        list.get(level).add(root.val);
+        levelOrderTraversal(level+1, list, root.left);
+        levelOrderTraversal(level+1, list, root.right);
+    }
+
     private ArrayList<ArrayList<Integer>> levelOrderQueue(TreeNode A) {
         Queue<TreeNode> queue = new LinkedList<>();
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
