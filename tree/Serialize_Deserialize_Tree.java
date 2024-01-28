@@ -38,7 +38,7 @@ public class Serialize_Deserialize_Tree {
         TreeNode right = head.right;
     }
 
-    // PreOrder
+    // LevelOrder
     public TreeNode solve(ArrayList<Integer> A) {
         int n = A.size();
         Queue<TreeNode> queue = new LinkedList<>();
